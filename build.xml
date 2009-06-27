@@ -20,7 +20,7 @@
 ** dialog. You have to check it in first.
 **
 -->
-<project name="myPluginName" default="dist" basedir=".">
+<project name="dataimport" default="dist" basedir=".">
     <!--
       ************************************************
       ** should not be necessary to change the following properties
@@ -62,13 +62,7 @@
     **********************************************************
     -->
     <target name="dist" depends="compile,revision">
-        <echo message="creating ${plugin.jar.name} ... "/>
-        <copy todir="${plugin.build.dir}/resources">
-            <fileset dir="resources"/>
-        </copy>
-        <copy todir="${plugin.build.dir}/images">
-            <fileset dir="images"/>
-        </copy>
+        <echo message="creating ${ant.project.name}.jar ... "/>
         <copy todir="${plugin.build.dir}">
             <fileset dir=".">
                 <include name="README" />
@@ -85,12 +79,11 @@
         ************************************************
     -->
             <manifest>
-                <attribute name="Author" value="..."/>
-                <attribute name="Plugin-Class" value="..."/>
+                <attribute name="Author" value="Dieter Muecke"/>
+                <attribute name="Plugin-Class" value="org.openstreetmap.josm.plugins.DataImport"/>
                 <attribute name="Plugin-Date" value="${version.entry.commit.date}"/>
-                <attribute name="Plugin-Description" value="..."/>
-                <attribute name="Plugin-Link" value="..."/>
-                <attribute name="Plugin-Mainversion" value="..."/>
+                <attribute name="Plugin-Description" value="Allows to import various file formats into JOSM directly."/>
+                <attribute name="Plugin-Mainversion" value="1700"/>
                 <attribute name="Plugin-Version" value="${version.entry.commit.revision}"/>
             </manifest>
         </jar>
